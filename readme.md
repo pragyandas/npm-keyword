@@ -56,3 +56,4 @@ Returns a promise for the count of packages.
 ## License
 
 MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Pragyan Das]

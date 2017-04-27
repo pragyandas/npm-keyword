@@ -1,7 +1,9 @@
 'use strict';
-var got = require('got');
+var fetch = require('node-fetch');
+var Agent = require('https-proxy-agent');
 var registryUrl = require('registry-url');
 var Promise = require('pinkie-promise');
+var tunnel = require('tunnel');
 
 function get(keyword, level) {
 	if (typeof keyword !== 'string') {
@@ -16,9 +18,21 @@ function get(keyword, level) {
 		'&endkey=[%22' + keyword + '%22,%7B%7D]' +
 		'&group_level=' + level;
 
-	return got(url, {json: true}).then(function (res) {
-		return res.body.rows;
-	});
+	var options = {};
+
+	if(process.env.https_proxy){
+		var agent = new Agent(process.env.https_proxy);
+		options.agent = agent;
+	}
+
+	return fetch(url, options).then(function (res) {
+		if (!res.ok) {
+			throw Error(res.statusText);
+		}
+		return res.json();
+	}).then(function(json){
+		return json.rows;
+	})
 }
 
 module.exports = function (keyword) {

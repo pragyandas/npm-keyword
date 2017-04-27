@@ -3,7 +3,7 @@
   "version": "4.2.0",
   "description": "Get a list of npm packages with a certain keyword",
   "license": "MIT",
-  "repository": "sindresorhus/npm-keyword",
+  "repository": "pragyandas/npm-keyword",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
@@ -29,7 +29,8 @@
     "search"
   ],
   "dependencies": {
-    "got": "^5.0.0",
+    "https-proxy-agent": "^1.0.0",
+    "node-fetch": "^1.6.3",
     "object-assign": "^4.0.1",
     "pinkie-promise": "^2.0.0",
     "registry-url": "^3.0.3"
