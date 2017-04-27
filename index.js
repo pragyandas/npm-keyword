@@ -3,7 +3,6 @@ var fetch = require('node-fetch');
 var Agent = require('https-proxy-agent');
 var registryUrl = require('registry-url');
 var Promise = require('pinkie-promise');
-var tunnel = require('tunnel');
 
 function get(keyword, level) {
 	if (typeof keyword !== 'string') {
