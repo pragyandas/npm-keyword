@@ -3,6 +3,7 @@ var fetch = require('node-fetch');
 var Agent = require('https-proxy-agent');
 var registryUrl = require('registry-url');
 var Promise = require('pinkie-promise');
+var config = require('rc')('npm');
 
 function get(keyword, level) {
 	if (typeof keyword !== 'string') {
@@ -19,8 +20,10 @@ function get(keyword, level) {
 
 	var options = {};
 
-	if(process.env.https_proxy){
-		var agent = new Agent(process.env.https_proxy);
+	var proxy = process.env.https_proxy || config['https-proxy'] || config.proxy;
+
+	if(proxy){
+		var agent = new Agent(proxy);
 		options.agent = agent;
 	}
 

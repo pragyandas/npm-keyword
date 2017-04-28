@@ -33,6 +33,7 @@
     "node-fetch": "^1.6.3",
     "object-assign": "^4.0.1",
     "pinkie-promise": "^2.0.0",
+    "rc": "^1.2.1",
     "registry-url": "^3.0.3"
   },
   "devDependencies": {
